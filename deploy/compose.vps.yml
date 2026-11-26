@@ -1,0 +1,14 @@
+# DimaFit on a small VPS, behind the shared Caddy gateway (network "web").
+# The image is built on another machine and loaded with `docker load`. GROQ_API_KEY lives in .env next to this file.
+services:
+  dimafit:
+    image: dimafit:latest
+    restart: unless-stopped
+    env_file: .env
+    networks:
+      - web
+    mem_limit: 200m
+
+networks:
+  web:
+    external: true

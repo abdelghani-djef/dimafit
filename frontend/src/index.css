@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans Arabic", "Helvetica Neue", Arial, sans-serif;
+  --color-ink: #14161c;
+  --color-muted: #5f636e;
+  --color-line: #e3e1da;
+  --color-paper: #f6f5f2;
+  --color-card: #ffffff;
+  --color-accent: #e84a12;
+  --color-accent-soft: #ffe9df;
+  --color-food: #0f766e;
+  --color-food-soft: #e0f2ef;
+  --color-warn: #9a5a06;
+  --color-warn-soft: #fcf0dc;
+  --color-bad: #b42318;
+  --color-bad-soft: #fde9e7;
+}
+
+html {
+  color-scheme: light;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+[dir="rtl"] body,
+[dir="rtl"] {
+  font-family: "Noto Sans Arabic", "Segoe UI", Tahoma, var(--font-sans);
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* Printing or "Save as PDF": only the plan, in black on white, without page-breaking cards. */
+@media print {
+  @page {
+    margin: 14mm;
+  }
+  body {
+    background: #fff;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-card {
+    break-inside: avoid;
+    border-color: #ccc !important;
+    box-shadow: none !important;
+  }
+  main {
+    padding: 0 !important;
+    max-width: none !important;
+  }
+}
